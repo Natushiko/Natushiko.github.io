@@ -3,94 +3,181 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>2000412.xyz 服务导航</title>
+    <title>导航</title>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
         body {
-            font-family: Arial, sans-serif;
-            max-width: 800px;
+            background-image: url('/background.jpg'); /* 使用相对路径引用背景图 */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: #fff;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+        
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: -1;
+        }
+        
+        .container {
+            max-width: 1000px;
             margin: 0 auto;
-            padding: 20px;
-            background-color: #f0f0f0;
+            padding: 40px 20px;
         }
+        
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
         h1 {
-            text-align: center;
-            color: #333;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
         }
-        .connection-types {
+        
+        .nav-categories {
             display: flex;
-            justify-content: space-around;
             flex-wrap: wrap;
-            margin-bottom: 30px;
+            gap: 30px;
+            justify-content: center;
         }
-        .connection-type {
-            background-color: #fff;
+        
+        .category {
+            background-color: rgba(30, 30, 40, 0.7);
+            border-radius: 15px;
+            padding: 25px;
+            width: 45%;
+            min-width: 300px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+        }
+        
+        .category:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        }
+        
+        .category h2 {
+            font-size: 1.5rem;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+            color: #f0f0f0;
+        }
+        
+        .service-buttons {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+        
+        .service-button {
+            display: block;
+            padding: 15px 10px;
+            background: linear-gradient(135deg, rgba(60, 60, 80, 0.8), rgba(40, 40, 60, 0.8));
             border-radius: 10px;
-            padding: 20px;
-            margin: 10px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            flex: 1;
-            min-width: 200px;
-        }
-        .connection-type h2 {
-            color: #2c3e50;
-            margin-top: 0;
-            text-align: center;
-        }
-        .services {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-around;
-        }
-        .service {
-            background-color: #3498db;
-            color: white;
-            border-radius: 5px;
-            padding: 15px 25px;
-            margin: 10px;
-            text-align: center;
             text-decoration: none;
-            transition: background-color 0.3s;
-            width: 150px;
+            color: #fff;
+            text-align: center;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
-        .service:hover {
-            background-color: #2980b9;
+        
+        .service-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: all 0.5s ease;
         }
-        .service:active {
-            background-color: #1c638d;
+        
+        .service-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+            background: linear-gradient(135deg, rgba(80, 80, 100, 0.8), rgba(60, 60, 80, 0.8));
+        }
+        
+        .service-button:hover::before {
+            left: 100%;
+        }
+        
+        .service-button::after {
+            content: '→';
+            margin-left: 8px;
+            opacity: 0.7;
+        }
+        
+        @media (max-width: 768px) {
+            .category {
+                width: 100%;
+            }
+            
+            .service-buttons {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .service-buttons {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 <body>
-    <h1>2000412.xyz 服务导航</h1>
-    
-    <div class="connection-types">
-        <div class="connection-type">
-            <h2>IPv6直连</h2>
-            <div class="services">
-                <a href="https://force.2000412.xyz:3000/" class="service">Xunlei</a>
-                <a href="https://force.2000412.xyz:3001/" class="service">Flie</a>
-                <a href="https://force.2000412.xyz:3002/" class="service">Tag</a>
-                <a href="https://force.2000412.xyz:2083/" class="service">Halo</a>
-                <a href="https://force.2000412.xyz:2087/" class="service">Music</a>
-                <a href="https://force.2000412.xyz:8443/" class="service">NAS</a>
-                <a href="https://force.2000412.xyz:2053/" class="service">1Panel</a>
+    <div class="container">
+        <header>
+            <h1>导航</h1>
+        </header>
+        
+        <div class="nav-categories">
+            <div class="category">
+                <h2>IPv6直连</h2>
+                <div class="service-buttons">
+                    <a href="https://force.2000412.xyz:3000/" class="service-button">Xunlei</a>
+                    <a href="https://force.2000412.xyz:3002/" class="service-button">Tag</a>
+                    <a href="https://force.2000412.xyz:2083/" class="service-button">Halo</a>
+                    <a href="https://force.2000412.xyz:2087/" class="service-button">Music</a>
+                    <a href="https://force.2000412.xyz:8443/" class="service-button">NAS</a>
+                    <a href="https://force.2000412.xyz:2053/" class="service-button">1Panel</a>
+                </div>
+            </div>
+            
+            <div class="category">
+                <h2>CDN连接</h2>
+                <div class="service-buttons">
+                    <a href="http://cdn.2000412.xyz:2086/" class="service-button">Xunlei</a>
+                    <a href="http://cdn.2000412.xyz:2052/" class="service-button">Tag</a>
+                    <a href="http://cdn.2000412.xyz:2083/" class="service-button">Halo</a>
+                    <a href="https://cdn.2000412.xyz:2087/" class="service-button">Music</a>
+                    <a href="https://cdn.2000412.xyz:8443/" class="service-button">NAS</a>
+                    <a href="https://cdn.2000412.xyz:2053/" class="service-button">1Panel</a>
+                </div>
             </div>
         </div>
-        
-        <div class="connection-type">
-            <h2>CDN连接</h2>
-            <div class="services">
-                <a href="http://cdn.2000412.xyz:2086/" class="service">Xunlei</a>
-                <a href="http://cdn.2000412.xyz:2082/" class="service">Flie</a>
-                <a href="http://cdn.2000412.xyz:2052/" class="service">Tag</a>
-                <a href="http://cdn.2000412.xyz:2083/" class="service">Halo</a>
-                <a href="https://cdn.2000412.xyz:2087/" class="service">Music</a>
-                <a href="https://cdn.2000412.xyz:8443/" class="service">NAS</a>
-                <a href="https://cdn.2000412.xyz:2053/" class="service">1Panel</a>
-            </div>
-        </div>
-        
-        
     </div>
 </body>
 </html>
