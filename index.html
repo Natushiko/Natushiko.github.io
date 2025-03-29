@@ -56,6 +56,7 @@
             flex-wrap: wrap;
             gap: 30px;
             justify-content: center;
+            margin-bottom: 50px;
         }
         
         .category {
@@ -82,17 +83,23 @@
             color: #f0f0f0;
         }
         
-        .service-buttons {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 15px;
+        /* 按钮区域样式 */
+        .bottom-buttons {
+            position: fixed;
+            bottom: 30px;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            z-index: 10;
         }
         
         .service-button {
             display: block;
-            padding: 15px 10px;
-            background: linear-gradient(135deg, rgba(60, 60, 80, 0.8), rgba(40, 40, 60, 0.8));
-            border-radius: 10px;
+            padding: 12px 20px;
+            background: rgba(60, 60, 80, 0.5); /* 降低透明度 */
+            border-radius: 8px;
             text-decoration: none;
             color: #fff;
             text-align: center;
@@ -100,7 +107,7 @@
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
         }
         
         .service-button::before {
@@ -115,9 +122,9 @@
         }
         
         .service-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
-            background: linear-gradient(135deg, rgba(80, 80, 100, 0.8), rgba(60, 60, 80, 0.8));
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            background: rgba(80, 80, 100, 0.7); /* 悬停时稍微增加透明度 */
         }
         
         .service-button:hover::before {
@@ -135,14 +142,19 @@
                 width: 100%;
             }
             
-            .service-buttons {
-                grid-template-columns: repeat(2, 1fr);
+            .bottom-buttons {
+                flex-wrap: wrap;
             }
         }
         
         @media (max-width: 480px) {
-            .service-buttons {
-                grid-template-columns: 1fr;
+            .bottom-buttons {
+                gap: 10px;
+            }
+            
+            .service-button {
+                padding: 10px 15px;
+                font-size: 0.9rem;
             }
         }
     </style>
@@ -178,6 +190,16 @@
                 </div>
             </div>
         </div>
+    </div>
+    
+    <!-- 底部按钮 -->
+    <div class="bottom-buttons">
+        <a href="https://force.2000412.xyz:3000/" class="service-button">Xunlei</a>
+        <a href="https://force.2000412.xyz:3002/" class="service-button">Tag</a>
+        <a href="https://force.2000412.xyz:2083/" class="service-button">Halo</a>
+        <a href="https://force.2000412.xyz:2087/" class="service-button">Music</a>
+        <a href="https://force.2000412.xyz:8443/" class="service-button">NAS</a>
+        <a href="https://force.2000412.xyz:2053/" class="service-button">1Panel</a>
     </div>
 </body>
 </html>
