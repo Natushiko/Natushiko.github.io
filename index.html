@@ -30,7 +30,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.7);
+            background-color: rgba(0, 0, 0, 0.5); /* 调整背景透明度 */
             z-index: -1;
         }
         
@@ -38,6 +38,7 @@
             max-width: 1000px;
             margin: 0 auto;
             padding: 40px 20px;
+            min-height: 70vh; /* 确保上半部分有足够的空间展示背景图 */
         }
         
         header {
@@ -51,53 +52,60 @@
             text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
         }
         
+        /* 底部导航区域样式 */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(30, 30, 40, 0.6); /* 降低透明度 */
+            backdrop-filter: blur(5px);
+            padding: 20px 0;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
+        }
+        
         .nav-categories {
             display: flex;
             flex-wrap: wrap;
             gap: 30px;
             justify-content: center;
-            margin-bottom: 50px;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
         }
         
         .category {
-            background-color: rgba(30, 30, 40, 0.7);
-            border-radius: 15px;
-            padding: 25px;
+            background-color: rgba(40, 40, 50, 0.6); /* 降低透明度 */
+            border-radius: 12px;
+            padding: 20px;
             width: 45%;
             min-width: 300px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
             transition: all 0.3s ease;
-            backdrop-filter: blur(5px);
         }
         
         .category:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
         }
         
         .category h2 {
-            font-size: 1.5rem;
-            margin-bottom: 25px;
-            padding-bottom: 15px;
-            border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
             color: #f0f0f0;
         }
         
-        /* 按钮区域样式 */
-        .bottom-buttons {
-            position: fixed;
-            bottom: 30px;
-            left: 0;
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            z-index: 10;
+        .service-buttons {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
         }
         
         .service-button {
             display: block;
-            padding: 12px 20px;
+            padding: 12px 10px;
             background: rgba(60, 60, 80, 0.5); /* 降低透明度 */
             border-radius: 8px;
             text-decoration: none;
@@ -110,25 +118,10 @@
             box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
         }
         
-        .service-button::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: all 0.5s ease;
-        }
-        
         .service-button:hover {
             transform: translateY(-2px);
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
             background: rgba(80, 80, 100, 0.7); /* 悬停时稍微增加透明度 */
-        }
-        
-        .service-button:hover::before {
-            left: 100%;
         }
         
         .service-button::after {
@@ -142,29 +135,33 @@
                 width: 100%;
             }
             
-            .bottom-buttons {
-                flex-wrap: wrap;
+            .service-buttons {
+                grid-template-columns: repeat(2, 1fr);
             }
         }
         
         @media (max-width: 480px) {
-            .bottom-buttons {
-                gap: 10px;
+            .service-buttons {
+                grid-template-columns: 1fr;
             }
             
             .service-button {
-                padding: 10px 15px;
+                padding: 10px;
                 font-size: 0.9rem;
             }
         }
     </style>
 </head>
 <body>
+    <!-- 页面上半部分 -->
     <div class="container">
         <header>
             <h1>导航</h1>
         </header>
-        
+    </div>
+    
+    <!-- 底部导航 -->
+    <div class="bottom-nav">
         <div class="nav-categories">
             <div class="category">
                 <h2>IPv6直连</h2>
@@ -190,16 +187,6 @@
                 </div>
             </div>
         </div>
-    </div>
-    
-    <!-- 底部按钮 -->
-    <div class="bottom-buttons">
-        <a href="https://force.2000412.xyz:3000/" class="service-button">Xunlei</a>
-        <a href="https://force.2000412.xyz:3002/" class="service-button">Tag</a>
-        <a href="https://force.2000412.xyz:2083/" class="service-button">Halo</a>
-        <a href="https://force.2000412.xyz:2087/" class="service-button">Music</a>
-        <a href="https://force.2000412.xyz:8443/" class="service-button">NAS</a>
-        <a href="https://force.2000412.xyz:2053/" class="service-button">1Panel</a>
     </div>
 </body>
 </html>
