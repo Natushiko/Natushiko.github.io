@@ -13,14 +13,13 @@
         }
         
         body {
-            background-image: url('/background.png'); /* 使用相对路径引用背景图 */
+            background-image: url('/background.png'); /* 使用根目录的背景图 */
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
             color: #fff;
             min-height: 100vh;
             position: relative;
-            overflow-x: hidden;
         }
         
         body::before {
@@ -52,61 +51,35 @@
             text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
         }
         
-        /* 底部导航区域样式 */
-        .bottom-nav {
-            position: fixed;
-            bottom: 0;
-            left: 0;
+        /* 表格样式 */
+        table {
             width: 100%;
-            background-color: rgba(30, 30, 40, 0.6); /* 降低透明度 */
+            border-collapse: collapse;
+            margin-bottom: 40px;
+            background-color: rgba(0, 0, 0, 0.2);
             backdrop-filter: blur(5px);
-            padding: 20px 0;
-            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
-        }
-        
-        .nav-categories {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 30px;
-            justify-content: center;
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        
-        .category {
-            background-color: rgba(40, 40, 50, 0.6); /* 降低透明度 */
             border-radius: 12px;
-            padding: 20px;
-            width: 45%;
-            min-width: 300px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-            transition: all 0.3s ease;
+            overflow: hidden;
         }
         
-        .category:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+        th {
+            background-color: rgba(0, 0, 0, 0.3);
+            padding: 15px;
+            text-align: left;
+            font-weight: bold;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
         
-        .category h2 {
-            font-size: 1.3rem;
-            margin-bottom: 15px;
-            padding-bottom: 10px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-            color: #f0f0f0;
+        td {
+            padding: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
         
-        .service-buttons {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 12px;
-        }
-        
+        /* 按钮样式 */
         .service-button {
             display: block;
             padding: 12px 10px;
-            background: rgba(60, 60, 80, 0.5); /* 降低透明度 */
+            background: rgba(0, 0, 0, 0.5);
             border-radius: 8px;
             text-decoration: none;
             color: #fff;
@@ -116,12 +89,13 @@
             position: relative;
             overflow: hidden;
             box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+            margin-bottom: 10px;
         }
         
         .service-button:hover {
-            transform: translateY(-2px);
+            transform: translateY(-3px);
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-            background: rgba(80, 80, 100, 0.7); /* 悬停时稍微增加透明度 */
+            background: rgba(0, 0, 0, 0.7);
         }
         
         .service-button::after {
@@ -131,18 +105,8 @@
         }
         
         @media (max-width: 768px) {
-            .category {
-                width: 100%;
-            }
-            
-            .service-buttons {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .service-buttons {
-                grid-template-columns: 1fr;
+            th, td {
+                padding: 10px;
             }
             
             .service-button {
@@ -153,40 +117,153 @@
     </style>
 </head>
 <body>
-    <!-- 页面上半部分 -->
     <div class="container">
         <header>
             <h1>导航</h1>
         </header>
-    </div>
-    
-    <!-- 底部导航 -->
-    <div class="bottom-nav">
-        <div class="nav-categories">
-            <div class="category">
-                <h2>IPv6直连</h2>
-                <div class="service-buttons">
-                    <a href="https://force.2000412.xyz:3000/" class="service-button">Xunlei</a>
-                    <a href="https://force.2000412.xyz:3002/" class="service-button">Tag</a>
-                    <a href="https://force.2000412.xyz:2083/" class="service-button">Halo</a>
-                    <a href="https://force.2000412.xyz:2087/" class="service-button">Music</a>
-                    <a href="https://force.2000412.xyz:8443/" class="service-button">NAS</a>
-                    <a href="https://force.2000412.xyz:2053/" class="service-button">1Panel</a>
-                </div>
-            </div>
-            
-            <div class="category">
-                <h2>CDN连接</h2>
-                <div class="service-buttons">
-                    <a href="http://cdn.2000412.xyz:2086/" class="service-button">Xunlei</a>
-                    <a href="http://cdn.2000412.xyz:2052/" class="service-button">Tag</a>
-                    <a href="http://cdn.2000412.xyz:2083/" class="service-button">Halo</a>
-                    <a href="https://cdn.2000412.xyz:2087/" class="service-button">Music</a>
-                    <a href="https://cdn.2000412.xyz:8443/" class="service-button">NAS</a>
-                    <a href="https://cdn.2000412.xyz:2053/" class="service-button">1Panel</a>
-                </div>
-            </div>
-        </div>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>分类</th>
+                    <th>链接</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- IPv6直连 -->
+                <tr>
+                    <td>IPv6直连</td>
+                    <td>
+                        <a href="https://force.2000412.xyz:3000/" class="service-button">Xunlei</a>
+                        <a href="https://force.2000412.xyz:3002/" class="service-button">Tag</a>
+                        <a href="https://force.2000412.xyz:2083/" class="service-button">Halo</a>
+                        <a href="https://force.2000412.xyz:2087/" class="service-button">Music</a>
+                        <a href="https://force.2000412.xyz:8443/" class="service-button">NAS</a>
+                        <a href="https://force.2000412.xyz:2053/" class="service-button">1Panel</a>
+                    </td>
+                </tr>
+                
+                <!-- CDN连接 -->
+                <tr>
+                    <td>CDN连接</td>
+                    <td>
+                        <a href="http://cdn.2000412.xyz:2086/" class="service-button">Xunlei</a>
+                        <a href="http://cdn.2000412.xyz:2052/" class="service-button">Tag</a>
+                        <a href="http://cdn.2000412.xyz:2083/" class="service-button">Halo</a>
+                        <a href="https://cdn.2000412.xyz:2087/" class="service-button">Music</a>
+                        <a href="https://cdn.2000412.xyz:8443/" class="service-button">NAS</a>
+                        <a href="https://cdn.2000412.xyz:2053/" class="service-button">1Panel</a>
+                    </td>
+                </tr>
+                
+                <!-- 服务器管理工具 -->
+                <tr>
+                    <td>服务器管理工具</td>
+                    <td>
+                        <a href="https://nas-1.u1874691.nyat.app:26096/" class="service-button">1panel frp</a>
+                        <a href="https://5ddd.com/max-nas1" class="service-button">Max 中继</a>
+                        <a href="https://console.cloud.tencent.com/" class="service-button">腾讯云</a>
+                        <a href="https://www.hpproxy.cn/#/client/package" class="service-button">HP</a>
+                        <a href="https://www.natfrp.com/tunnel/" class="service-button">SakuraFrp</a>
+                        <a href="https://panel.chmlfrp.cn/" class="service-button">ChmlFrp</a>
+                        <a href="https://www.cloudflare-cn.com/enterprise/" class="service-button">Cloudflare</a>
+                        <a href="https://register.us.kg/panel/main" class="service-button">USKG</a>
+                        <a href="https://ohttps.com/monitor/dashboard" class="service-button">OHTTPS</a>
+                        <a href="https://www.mnn.tw/panel/user/index" class="service-button">梦牛网络</a>
+                        <a href="https://my.zerotier.com/network" class="service-button">ZeroTier</a>
+                        <a href="https://github.com/Natushiko" class="service-button">Natushiko (JCard)</a>
+                    </td>
+                </tr>
+                
+                <!-- 工具库 -->
+                <tr>
+                    <td>工具库</td>
+                    <td>
+                        <a href="https://translate.google.cn/?hl=zh-CN" class="service-button">Google</a>
+                        <a href="https://github.akams.cn/" class="service-button">Github Proxy</a>
+                        <a href="http://www.youdao.com/" class="service-button">有道首页</a>
+                        <a href="https://fanyi.baidu.com/?aldtype=16047#auto/zh" class="service-button">百度翻译</a>
+                        <a href="https://xueshu.baidu.com/" class="service-button">百度学术</a>
+                        <a href="https://mail.163.com/js6/main.jsp?sid=wAZBYNPfkzNYJVbGAUffZtIpmKdTEcwU&df=mail163_letter#module=welcome.WelcomeModule%7C%7B%7D" class="service-button">网易邮箱</a>
+                        <a href="https://mail.qq.com/cgi-bin/frame_html?sid=9ogiRSqc9GTT0lU3&r=25217a899d09ee0591664b1c7c149638&lang=zh" class="service-button">QQ邮箱</a>
+                        <a href="https://yandex.com/" class="service-button">Yandex</a>
+                        <a href="https://www.strerr.com/cn/markdown2word.html" class="service-button">markdown</a>
+                        <a href="https://docsmall.com/" class="service-button">docsmall</a>
+                    </td>
+                </tr>
+                
+                <!-- AI工具 -->
+                <tr>
+                    <td>AI工具</td>
+                    <td>
+                        <a href="https://kimi.moonshot.cn/" class="service-button">Kimi</a>
+                        <a href="https://tongyi.aliyun.com/" class="service-button">通义千问</a>
+                        <a href="https://www.doubao.com/chat/?channel=bing_sem&source=dbweb_bing_sem_xhs_cpc_pinp_hexin_05&keywordid=77309808884726&msclkid=aa5e3c1b95ef123339855bf30b6f2200" class="service-button">豆包</a>
+                    </td>
+                </tr>
+                
+                <!-- 资源点 -->
+                <tr>
+                    <td>资源点</td>
+                    <td>
+                        <a href="http://www.comicat.org/" class="service-button">漫猫动漫</a>
+                        <a href="https://www.bilibili.com/" class="service-button">哔哩哔哩</a>
+                        <a href="https://www.aliyundrive.com/drive" class="service-button">阿里云盘</a>
+                        <a href="https://wall.alphacoders.com/?lang=Chinese" class="service-button">Wallpaper Abyss</a>
+                        <a href="http://sj.zol.com.cn/bizhi/" class="service-button">ZOL手机壁纸</a>
+                        <a href="https://cofface.com/" class="service-button">Cofface Blog</a>
+                        <a href="https://www.cngal.org/" class="service-button">中文GalGame</a>
+                        <a href="https://zhutix.com/" class="service-button">致美化</a>
+                        <a href="https://mox.moe/" class="service-button">Mox.moe 漫畫</a>
+                        <a href="http://www.lonelystar.org/download.htm" class="service-button">植物僵尸</a>
+                        <a href="https://www.rrdynb.com/index.html" class="service-button">人人电影网</a>
+                        <a href="https://www.codelicence.cn/" class="service-button">云盘4K</a>
+                        <a href="https://g.xn--8qvt52h.top/t/HHH" class="service-button">杏铃の小本</a>
+                        <a href="https://youhou8.com/?orderBy=installs&orderDir=desc" class="service-button">油猴脚本</a>
+                        <a href="https://www.gequhai.com/" class="service-button">歌曲海</a>
+                    </td>
+                </tr>
+                
+                <!-- 文献库 -->
+                <tr>
+                    <td>文献库</td>
+                    <td>
+                        <a href="http://www.cqvip.com/" class="service-button">维普网</a>
+                        <a href="http://www.wanfangdata.com.cn/index.html?index=true" class="service-button">万方</a>
+                        <a href="https://linbaoshuwu.com/" class="service-button">琳宝书屋</a>
+                        <a href="https://www.jiumodiary.com/" class="service-button">鸠摩搜索</a>
+                        <a href="https://bookfere.com/" class="service-button">书伴</a>
+                        <a href="https://noveless.com/" class="service-button">精校全本</a>
+                        <a href="http://www.kgbook.com/" class="service-button">苦瓜书盘</a>
+                        <a href="https://new.shuge.org/" class="service-button">书格</a>
+                        <a href="http://www.fast8.com/list/6_1.html" class="service-button">快吧软件</a>
+                        <a href="https://sci-hub.et-fine.com/" class="service-button">sci-hub</a>
+                    </td>
+                </tr>
+                
+                <!-- 教育教学 -->
+                <tr>
+                    <td>教育教学</td>
+                    <td>
+                        <a href="https://www.icourse163.org/home.htm?userId=1421327801#/home/course" class="service-button">慕课</a>
+                        <a href="http://www.shuxue9.com/" class="service-button">数九网</a>
+                        <a href="http://www.madio.net/" class="service-button">数学建模社区</a>
+                        <a href="https://www.enfamily.cn/" class="service-button">英语家园</a>
+                        <a href="http://www.moe.gov.cn/" class="service-button">教育部</a>
+                        <a href="https://fishc.com.cn/" class="service-button">鱼C工作室</a>
+                        <a href="https://scnlts.scedu.com.cn/" class="service-button">信息技术工程2.0</a>
+                        <a href="https://www.zqy.com/" class="service-button">正确云</a>
+                        <a href="http://203.25.209.239:61005/9RCtCw09LC7~9-jhUCOd00NnxU8/" class="service-button">蓉翼校园</a>
+                        <a href="https://www.njpta.org.cn/" class="service-button">内江人事考试网</a>
+                        <a href="https://basic.smartedu.cn/training/2025hjpx" class="service-button">中小学智慧研修</a>
+                        <a href="https://www.nedu.cn/apppc/credit/#/employee/home" class="service-button">继教网申报平台</a>
+                        <a href="https://www.sedu.net/student/#/center" class="service-button">继教网学习平台</a>
+                        <a href="https://www.zhaojiao.net/" class="service-button">招教网</a>
+                    </td>
+                </tr>
+                  
+            </tbody>
+        </table>
     </div>
 </body>
 </html>
